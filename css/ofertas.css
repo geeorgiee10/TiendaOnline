@@ -1,0 +1,70 @@
+/* Sección Ofertas*/
+#ofertas {
+    grid-column: 2 / 10;
+    grid-row: 6 / 7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espaciado);
+}
+
+.formularioOfertas{
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaciado-pequeno);
+    width: 80%;
+}
+
+/* Estilos para el input donde se introduce el correo */
+#correo{
+    height: 2rem;
+    border-radius: var(--borde-radio);
+    padding: var(--espaciado);
+    font-size: var(--texto-grande);
+    color: var(--color-texto);
+    box-shadow: var(--sombra-mediana);
+    background-color: var(--color-fondo);
+    border: 0;
+    transition: transform 1s ease;
+}
+
+#correo:valid{
+    border: 2px solid #4CAF50; /* Borde rojo para campos inválidos */
+}
+
+#correo:invalid{
+    color: #f31602; /* Texto rojo para campos inválidos */
+}
+
+/* Estilos para cuando se hace focus en el input */
+#correo:focus{
+    transform: scale(1.05);
+}
+
+#enviarOfertas{
+    height: 2rem;
+    background-color: var(--color-secundario);
+    color: var(--color-fondo-principal);
+    border-radius: var(--borde-radio);
+    border: 0;
+    font-size: var(--texto-pequeno);
+    transition: transform 1s ease;
+}
+
+#enviarOfertas:hover{
+    transform: scale(1.05);
+}
+
+/* Media querie para vistas moviles */
+@media (max-width: 768px) {
+    #ofertas h3{
+        font-size: var(--texto-pequeno);
+        text-align: center;
+    }
+    
+    #correo{
+        font-size: var(--texto-pequeno);
+        padding: var(--espaciado-pequeno);
+    }
+}

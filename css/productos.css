@@ -1,0 +1,114 @@
+#tiempoCarga{
+    height: 5em;
+    position: fixed; 
+    top: 50%;
+    left: 50%; 
+    z-index: 1000;
+    display: none;
+}
+
+#productoCategoria {
+    width: 95vw;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+    gap: var(--espaciado);
+    padding: var(--espaciado);
+    margin-top: var(--espaciado);
+    justify-self: center;
+}
+
+.numProductos{
+    z-index: 1000;
+    font-size: var(--texto-grande);
+    color: var(--color-texto);
+    justify-self: center;
+    top: 50%;
+    left: 50%;
+    grid-row: 3;
+}
+
+.containerProductos form {
+    width: 100%;
+    height: 15vh;
+    grid-row: 1;
+    grid-column: 2 / -2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--espaciado);
+    padding: var(--espaciado);
+    background-color: var(--color-fondo);
+    border-radius: var(--borde-radio);
+}
+
+#formCategorias{
+    width: 10rem;
+}
+
+#cargarMas{
+    grid-row: 4;
+    width: 15rem;
+    height: 5rem;
+    font-size: var(--texto-grande);
+    background-color: var(--color-secundario);
+    color: var(--color-fondo);
+    border-radius: var(--borde-radio);
+    transition: transform 0.5s ease;
+    justify-self: center;
+}
+
+#cargarMas:hover{
+    transform: scale(1.05);
+}
+
+.contenedorProducto{
+    width: 100%;
+    max-width: 20rem; 
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    border-radius: var(--borde-radio);
+    transition: transform 0.3s ease;
+    box-shadow: var(--sombra-mediana);
+}
+
+.contenedorProducto:hover{
+    transform: scale(1.05);
+    box-shadow: var(--sombra-grande);
+}
+
+.contenedorIMGProducto img{
+    width: 100%;
+    object-fit: cover;
+    height: auto;
+    border-radius: var(--borde-radio);
+}
+
+.contenedorTexto{
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaciado-pequeño);
+    padding: 1.5rem;
+    flex: 1;
+}
+
+.contenedorTexto > *:nth-child(2) {
+    flex-grow: 1;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+}
+
+.contenedorTexto > *:nth-child(3)::after {
+    content: "€";
+    margin-left: 0.2rem;
+}
+
+
+@media (max-width: 768px) {
+
+    
+
+}

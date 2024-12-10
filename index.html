@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Web Store</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
+    <script src="index.js"></script>
+</head>
+<body>
+    <!-- Contenedor grid general -->
+    <div class="container">
+        <!-- Header de la pagina -->
+        <header>
+            <div id="logo">
+                <i class="fa-brands fa-pied-piper">Fake Web Store</i>
+            </div>
+        
+            <div id="subcontenedor">
+                <button id="login">Login</button>
+                <div id="carrito">
+                
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+        
+                <div id="hamburguesa">
+                    <span class="linea"></span>
+                    <span class="linea"></span>
+                    <span class="linea"></span>
+                </div>
+                <nav class="navbar">
+                    <i id="x" class="fa-solid fa-x"></i>
+                    <ul class="nav-links">
+                        <li id="inicio">Inicio</li>
+                        <li id="NavProductos">Productos</li>
+                    </ul>
+                </nav>
+
+            </div>
+        </header>
+        
+        <!-- Contenedor de la página de inicio -->
+        <div class="containerInicio">
+        
+
+            <div id="hero">
+            <video autoplay loop muted playsinline class="hero-video">
+                <source src="./5849610-hd_1920_1080_30fps.mp4" type="video/mp4">
+                Tu navegador no soporta videos en HTML5.
+            </video>
+            <div class="hero-content">
+                <h1>Descubre nuestra colección</h1>
+                <p>Las mejores ofertas en productos de calidad</p>
+            </div>
+            </div>
+            <div id="eslogan"><span>Fake en el nombre, real en la experiencia</span></div>
+            <div id="categorias"></div>
+            <div id="siguenos">
+                <div class="imagenSiguenos">
+                    <div class="item item-1"><img src="./Imagenes/imagen1.jpg" alt="Imagen1"></div>
+                    <div class="item item-1"><img src="./Imagenes/imagen2.jpg" alt="Imagen1"></div>
+                    <div class="item item-1"><img src="./Imagenes/imagen3.jpg" alt="Imagen1"></div>
+                </div>
+                <div class="textoSiguenos">
+                    <span>¡Conéctate con <b>Fake Web Storage</b> y descubre el lugar donde lo <b>Fake</b> se convierte 
+                        en tu favorito! Síguenos para más sorpresas, ofertas exclusivas y contenido único</span>
+                    <div id="iconoRedesSociales">
+                        <a href="https://www.instagram.com" class="iconosSiguenos instagram">
+                        <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com" class="iconosSiguenos linkedin">
+                            <i class="fa-brands fa-square-facebook"></i>
+                        </a>
+                        <a href="https://twitter.com" class="iconosSiguenos twitter">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="ofertas">
+                <h3>Conéctate con lo más <b>Fake</b>: comparte tu correo y déjanos sorprenderte con nuestras mejores ofertas</h3>
+
+                <form class="formularioOfertas">
+                    <input type="text" id="correo" name="correo" placeholder="Correo Electrónico" pattern="[A-Za-zñÑ0-9_\s]+@[a-z0-9]+\.com" title="Formato: usuario@dominio.com">
+                    <button id="enviarOfertas">Enviar</button>
+                </form>
+            </div>
+        
+        </div>
+
+        <!-- Contenedor de la página de los productos -->
+        <div class="containerProductos">
+        
+            <form>
+                <select name="formCategorias" id="formCategorias">
+                    
+                </select>
+                <button id="btnBuscar">Buscar</button>
+            </form>
+            <img src="./Imagenes/carga.webp" alt="Imagen de Carga" id="tiempoCarga">
+            <div id="productoCategoria"></div>
+
+            <button id="cargarMas">Cargar más Productos</button>
+        
+        </div>
+
+        <!-- Footer de la página -->
+        <footer>
+        <div id="ayuda">
+            <p>Ayuda</p>
+            <a>Preguntas Frecuentes</a>
+            <a>Centro de Ayuda</a>
+            <a>Guia de Usuario</a>
+        </div>
+        <div id="nosotros">
+            <p>Nosotros</p>
+            <a>¿Quiénes somo?</a>
+            <a>Nuestro Equipo</a>
+            <a>Mision y Valores</a>
+        </div>
+        <div id="legal">
+            <p>Legal</p>
+            <span> 2024 Fake Web Storage. Todos los derechos reservados.</span>
+        </div>
+        <div id="pagoYRedes">
+            <div id="metodosPago">
+                <p>Métodos de pago</p>
+                <div id="iconoPago">
+                    <i class="fa-solid fa-credit-card"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-brands fa-cc-paypal"></i>
+                </div>
+            </div>
+            <div id="redesSociales">
+                <p>Redes Sociales</p>
+                <div id="iconoRedesSociales">
+                    <a href="https://www.instagram.com" class="iconos instagram">
+                    <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com" class="iconos linkedin">
+                        <i class="fa-brands fa-square-facebook"></i>
+                    </a>
+                    <a href="https://twitter.com" class="iconos twitter">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                </div>
+        </div>
+    </div>
+        </footer>
+    </div>
+</body>
+</html>

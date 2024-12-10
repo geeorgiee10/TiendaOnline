@@ -1,0 +1,35 @@
+/* Sección Eslogan */
+#eslogan {
+    grid-column: 2 / 10;
+    grid-row: 3 / 4;
+    text-align: center;
+    min-height: 50vh;
+    background: url(../Imagenes/eslogan.png) center/ cover no-repeat; /* Imagen de fondo para el div del eslogan */
+    border-radius: var(--borde-radio);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#eslogan span {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--color-fondo);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para el texto */
+    transform: rotate(10deg);
+    padding: 2rem;
+}
+
+/* Media querie para vistas moviles */
+@media (max-width: 768px) {
+    #eslogan {
+        min-height: 50vh;
+        background: url(../Imagenes/eslogan.png);
+    }
+    
+    #eslogan span {
+        font-size: 2rem;
+        transform: rotate(25deg);
+    }
+
+}

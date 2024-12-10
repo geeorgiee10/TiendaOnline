@@ -1,0 +1,183 @@
+/* Header */
+header {
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+    position: fixed;
+    width: 100%;
+    min-height: 15vh;
+    background-color: var(--color-primario);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--espaciado);
+    z-index: 1000;
+}
+
+#logo{
+    font-size: 3rem;
+    color: var(--color-fondo);
+    transition: all 0.3s ease;
+}
+
+#logo:hover{
+    color: var(--color-resaltar);
+}
+
+#subcontenedor{
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    align-items: center;
+    min-width: 5rem;
+}
+
+#carrito{
+    display: flex;
+    align-items: center;
+    gap: var(--espaciado-pequeno);
+    font-size: 2rem;
+    color: var(--color-fondo);
+}
+
+#login{
+    width: 10rem;
+    height: 2rem;
+    border: 0;
+    border-radius: var(--borde-radio);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font-size: var(--texto-grande);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#login:hover {
+    background-color: var(--color-resaltar);
+    color: var(--color-fondo);
+}
+
+#carrito:hover{
+    color: var(--color-resaltar);
+}
+
+/* Estilos para la hamburguesa */
+#hamburguesa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    position: relative;
+    right: 0;
+    transition: right 0.5s ease-in-out;
+    background-color: var(--color-secundario);
+    color: var(--color-fondo);
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+}
+
+#hamburguesa:hover{
+    background-color: var(--color-texto);
+    transform: scale(1.05);
+}
+
+.linea {
+    width: 1.5rem;
+    height: 0.1rem;
+    background-color: var(--color-fondo);
+    border-radius: var(--borde-radio);
+    transition: all 0.5s ease-in-out;
+}
+
+/* Estilos principales del nav */
+.navbar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 35%;
+    height: 100vh;
+    background-color: rgba(38, 70, 83, 0.9);
+    padding: var(--espaciado);
+    transition: right 0.5s ease-in-out;
+    z-index: 1001;
+}
+
+/* Boton para cerrar el nav */
+#x {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    color: var(--color-fondo);
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+#x:hover {
+    transform: rotate(90deg);
+    color: var(--color-resaltar);
+}
+
+/* Lista con los elementos */
+.nav-links {
+    margin-top: 80px;
+    list-style: none;
+}
+
+/* Elementos del nav */
+.nav-links li {
+    margin: 2rem 0;
+    font-size: var(--texto-grande);
+    color: var(--color-fondo);
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Al hacer hover cambia el color y se hacen más grandes */
+.nav-links li:hover {
+    color: var(--color-resaltar);
+    transform: translateX(10px);
+}
+
+/* Media querie para vista movil */
+@media (max-width: 768px) {
+    header {
+        min-height: 10vh;
+        padding: var(--espaciado-pequeno);
+        justify-content: center;
+        width: 100%;
+        gap: 1rem;
+    }
+
+    #logo {
+        font-size: 1.2rem;
+        margin-right: 0;
+    }
+
+    #subcontenedor {
+        gap: 1rem;
+    }
+
+    #login {
+        width: 5rem;
+        height: 1.5rem;
+        font-size: var(--texto-pequeno);
+    }
+
+    #carrito {
+        font-size: var(--texto-grande);
+    }
+
+    #hamburguesa {
+        height: 2.5rem;
+        width: 2.6rem;
+    }
+
+    .navbar {
+        width: 100%;
+        height: 100%;
+    }
+}

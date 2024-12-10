@@ -1,0 +1,113 @@
+/* Importar de fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+/* Importar otros archivos css */
+@import url(./header.css);
+@import url(./hero.css);
+@import url(./eslogan.css);
+@import url(./categorias.css);
+@import url(./siguenos.css);
+@import url(./ofertas.css);
+@import url(./footer.css);
+@import url(./productos.css);
+
+/* Variables globales */
+:root {
+    /* Colores */
+    --color-primario: #2a9d8f; 
+    --color-secundario: #264653; 
+    --color-resaltar: #e76f51; 
+    --color-fondo: #f4f1de; 
+    --color-texto: #3a3a3a; 
+    --color-fondo-principal: #ffffff;
+
+    /* Espaciado */
+    --espaciado: 2rem;
+    --espaciado-pequeno: 1rem;
+    --espaciado-grande: 3rem;
+    --borde-radio: 10px;
+
+    /* Sombras */
+    --sombra-pequena: 0 1px 3px rgba(0,0,0,0.12);
+    --sombra-mediana: 0 4px 6px rgba(0,0,0,0.1);
+    --sombra-grande: 0.5rem 0.5rem 0.5rem rgba(0,0,0,0.3);
+
+    /* Fuentes */
+    --fuente-navidad: 'Mountains of Christmas', cursive;
+    --fuente-titulos: 'Poppins', sans-serif;
+    --fuente-texto: 'Lato', sans-serif;
+    --texto-base: 16px;
+    --texto-pequeno: 0.875rem;
+    --texto-grande: 1.125rem;
+    --texto-muy-grande: 1.5rem;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-texto);
+    width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--fuente-titulos);
+}
+
+/* Grid para el layout general */
+.container {
+    display: grid;
+    grid-template-columns: minmax(6rem, 1fr) repeat(8, minmax(min-content, 16rem)) minmax(6rem, 1fr); /* Grid de 10 columnas */ 
+    grid-template-rows: repeat(4, min-content); /* 4 filas */
+    gap: var(--espaciado);
+    width: 100%;
+    margin: 0 auto;
+    background-color: var(--color-fondo-principal);
+    min-height: 100vh;
+    justify-content: center;
+}
+
+/* Apartado de inicio que contiene toda la página principal menos header y footer */
+.containerInicio {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: inherit; /* Valor de las columnas heredado del elemento padre */
+    grid-template-rows: repeat(4, min-content);  /* 4 filas */
+    gap: var(--espaciado-grande);
+    padding-top: calc(15vh + var(--espaciado));
+    justify-content: center;
+    width: 100%;
+}
+
+/* Layout responsive para la vista donde se ven los productos(por categoria o todos sueltos) */
+.containerProductos {
+    display: none;
+    grid-column: 1 / -1;
+    grid-template-rows: repeat(auto-fit, 1fr);
+    padding-top: calc(15vh + var(--espaciado));
+    min-height: 100vh;
+    width: 100%;
+    gap: var(--espaciado);
+}
+
+b {
+    color: var(--color-resaltar);
+}
+
+
+@media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden;
+        height: 100%;
+    }
+
+    .containerInicio {
+        padding-top: var(--espaciado);
+    }
+}
