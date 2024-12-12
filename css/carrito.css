@@ -1,0 +1,116 @@
+.divCarrito{
+    height: 100%;
+    width: 100%;
+    background-color: var(--color-fondo);
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding: var(--espaciado);
+    overflow-y: auto;
+}
+
+.tituloCarrito{
+    align-self: center;
+}
+
+.botonCerrarCarrito {
+    min-width: 3rem;
+    min-height: 3rem;
+    width: 3rem;
+    height: 3rem;
+    background-color: red;
+    border: 0;
+    border-radius: 50%;
+    color: white;
+    align-self: flex-end;
+    margin-bottom: var(--espaciado-pequeno);
+    font-size: var(--texto-grande);
+    transition: transform 0.6s ease;
+}
+
+.botonCerrarCarrito:hover {
+    color: var(--color-secundario);
+    transform: scale(1.5);
+}
+
+.divElementosCarrito{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--espaciado-pequeno);
+}
+
+.elementoCarrito{
+    min-width: 20rem;
+    width: 20%;
+    height: auto;
+    min-height: 30rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--borde-radio);
+    background-color: var(--color-fondo-principal);
+}
+
+.imgCarrito{
+    height: 60%;
+    border-radius: var(--borde-radio);
+}
+
+.divTextoCarrito{
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: auto;
+    padding: var(--espaciado-pequeno);
+}
+
+.divTextoCarrito > *:nth-child(2)::after {
+    content: "€";
+    margin-left: 0.2rem;
+}
+
+.vacio{
+    align-self: center;
+}
+
+.divControlarArticulo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
+.botonesArticulos{
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: var(--texto-grande);
+    border: 0;
+    box-shadow: var(--sombra-mediana);
+    background-color: var(--color-secundario);
+    color: var(--color-fondo-principal);
+    transition: transform 0.6s ease;
+}
+
+.botonesArticulos:hover{
+    transform: scale(1.2);
+}
+
+.btnBorrarArticulo{
+    width: 2rem;
+    height: 2rem;
+    background-color: transparent;
+    border: 0;
+    font-size: var(--texto-muy-grande);
+    transition: transform 0.6s ease;
+}
+
+.btnBorrarArticulo:hover{
+    transform: scale(1.2);
+}

@@ -13,6 +13,8 @@ var porCategorias = false;
 
 var formCategorias;
 
+var carrito = [];
+
 window.onload = function () {
     containerInicio = document.getElementsByClassName("containerInicio")[0];
     containerProductos = document.getElementsByClassName("containerProductos")[0];
@@ -24,8 +26,12 @@ window.onload = function () {
     const navInicio = document.getElementById("inicio");
     tiempCarga = document.getElementById("tiempoCarga");
     const cargarMasbtn = document.getElementById("cargarMas");
-    
+    const logo = document.getElementById("logo");
+
+    const btnBuscar = document.getElementById("btnBuscar");
     formCategorias = document.getElementById("formCategorias");
+
+    const carrito = document.getElementById("carrito");
 
     productos = document.getElementById("productoCategoria");
 
@@ -40,6 +46,16 @@ window.onload = function () {
         containerProductos.style.display = "none";
         document.documentElement.scrollTop = 0;
     })
+
+    logo.addEventListener("click", () =>{
+        containerInicio.style.display = "grid";
+        containerProductos.style.display = "none";
+        document.documentElement.scrollTop = 0;
+    })
+
+    carrito.addEventListener("click", (e) =>{
+        mostrarCarrito();
+    });
     
     hamburguer.addEventListener("click", () => {
         nav.style.right = "0";
@@ -49,6 +65,14 @@ window.onload = function () {
     cerrar.addEventListener("click", () => {
         nav.style.right = "-100%"; 
         hamburguer.style.right = "0";
+    });
+
+    btnBuscar.addEventListener("click", (e) => {
+        categoriaActual = formCategorias.value;
+        porCategorias = true;
+        offset = 0;
+        limite = 10;
+        mostrarProductosPorCategorias();
     });
 
     mostrarCategorias();
@@ -91,6 +115,7 @@ function listarCategorias(){
             option.value = element.id;
             option.textContent = element.name;
             formCategorias.appendChild(option);
+
         });
     })
     .catch((err) => {
@@ -265,17 +290,247 @@ function forEachProductos(producto) {
         div3.appendChild(descripcion);
         div3.appendChild(precio);
 
+        div1.idElemento = element.id;
+        div1.addEventListener("click", detalleProducto);
+
+
         div1.appendChild(div2);
         div1.appendChild(div3);
 
-        div1.addEventListener("click", () =>{
-            detalleProducto();
-        })
-
+        
         productos.appendChild(div1);
     });
 }
 
-function detalleProducto(){
+function detalleProducto(e){
+    tiempCarga.style.display = "block";
+    fetch("https://api.escuelajs.co/api/v1/products/" + e.currentTarget.idElemento + "", { method: "GET" })
+    .then((res) => res.json())
+    .then((producto) => {
 
+        tiempCarga.style.display = "none";
+
+        let divDetalle = document.createElement("div");
+        divDetalle.classList.add("divDetalle");
+
+        let btnCerrar = document.createElement("button");
+        btnCerrar.textContent = "X";
+        btnCerrar.classList.add("botonCerrar");
+        btnCerrar.addEventListener("click", ()=>{
+            divDetalle.remove();
+        })
+
+        let contenidoDetalle = document.createElement("div");
+        contenidoDetalle.classList.add("contenidoDetalle");
+
+        let imgProducto = document.createElement("img");
+        imgProducto.classList.add("imagenDetalle");
+
+        let textoDetalle = document.createElement("div");
+        textoDetalle.classList.add("textoDetalle");
+
+        let tituloProducto = document.createElement("h2");
+        let precioProducto = document.createElement("li");
+        let descripcionProducto = document.createElement("li");
+        let nombreCategoriaProducto = document.createElement("li");
+
+        let btnCesta = document.createElement("button");
+        btnCesta.classList.add("btnCesta");
+        btnCesta.id = producto.id;
+        btnCesta.textContent = "🛒 Añadir producto al carrito";
+        btnCesta.addEventListener("click", añadirCarrito);
+        
+        setInterval(()=>{
+             imgProducto.src = cambiarFoto(producto.images);
+            
+        },5000)
+
+        imgProducto.src = producto.images;
+        imgProducto.addEventListener("error", (e) =>{
+            imgProducto.src = "./Imagenes/error.jpg";
+        })
+        
+
+        tituloProducto.textContent = producto.title;
+        precioProducto.textContent = "Precio: " + producto.price + "€";
+        descripcionProducto.textContent = "Descripción: " + producto.description;
+        nombreCategoriaProducto.textContent = "Categoría: " + producto.category.name;
+        
+        textoDetalle.appendChild(tituloProducto);
+        textoDetalle.appendChild(precioProducto);
+        textoDetalle.appendChild(descripcionProducto);
+        textoDetalle.appendChild(nombreCategoriaProducto);
+        textoDetalle.appendChild(btnCesta);
+
+        contenidoDetalle.appendChild(imgProducto);
+        contenidoDetalle.appendChild(textoDetalle);
+        
+        divDetalle.appendChild(btnCerrar);
+        divDetalle.appendChild(contenidoDetalle);
+    
+        document.body.appendChild(divDetalle);
+        
+    })
+    .catch((err) => {
+        tiempCarga.style.display = "none";
+        console.log("error:", err);
+    });
+}
+
+function cambiarFoto(array){
+    let indiceActual = 0;
+    indiceActual = Math.floor(Math.random() * (array.length + 0) + 0)
+ 
+    return array[indiceActual];
+}
+
+function añadirCarrito(e){
+    
+    let idProducto = e.target.id;
+
+    let itemCarrito = carrito.find(item => item.id === idProducto);
+
+    if (itemCarrito) {
+        itemCarrito.cantidad += 1;
+    } 
+    else {
+        carrito.push({
+            id: idProducto,
+            cantidad: 1,
+        });
+    }
+
+}
+
+function mostrarCarrito(){
+    tiempCarga.style.display = "block";
+
+    let existeCarrito = document.querySelector('.divCarrito');
+    if (existeCarrito) {
+        existeCarrito.remove(); 
+    }
+
+    let divCarrito = document.createElement("div");
+    divCarrito.classList.add("divCarrito");
+
+    let tituloCarrito = document.createElement("h2");
+    tituloCarrito.classList.add("tituloCarrito");
+    tituloCarrito.textContent = "Carrito de la Compra";
+    
+    let cerrarCarrito = document.createElement("button");
+    cerrarCarrito.textContent = "X";
+    cerrarCarrito.classList.add("botonCerrarCarrito");
+    cerrarCarrito.addEventListener("click", ()=>{
+        divCarrito.remove();
+    })
+
+    divCarrito.appendChild(cerrarCarrito);
+    divCarrito.appendChild(tituloCarrito);
+
+    if(carrito.length == 0){
+        let vacio = document.createElement("h2");
+        vacio.classList.add("vacio");
+        vacio.textContent = "El carrito esta vacio";
+        divCarrito.appendChild(vacio)
+    }
+
+    let divElementosCarrito = document.createElement("div");
+    divElementosCarrito.classList.add("divElementosCarrito");
+
+    carrito.forEach(productoCarrito => {
+
+        let elemento = productoCarrito;
+
+        fetch("https://api.escuelajs.co/api/v1/products/" + elemento.id + "", { method: "GET" })
+        .then((res) => res.json())
+        .then((producto) => {
+    
+            tiempCarga.style.display = "none";
+
+            
+            let elementoCarrito = document.createElement("div");
+            elementoCarrito.classList.add("elementoCarrito");
+
+            let imgCarrito = document.createElement("img");
+            imgCarrito.classList.add("imgCarrito");
+            imgCarrito.src = producto.images[0];
+            imgCarrito.addEventListener("error", (e) =>{
+                imgCarrito.src = "./Imagenes/error.jpg";
+            })
+
+            let divTextoCarrito = document.createElement("div");
+            divTextoCarrito.classList.add("divTextoCarrito");
+
+            let nombreProductoCarrito = document.createElement("h4");
+            let precioProductoCarrito = document.createElement("span");
+
+            let divControlarArticulo = document.createElement("div");
+            divControlarArticulo.classList.add("divControlarArticulo");
+
+            let botonMenos = document.createElement("button");
+            botonMenos.classList.add("botonesArticulos");
+            botonMenos.textContent = "-";
+
+            let cantidadProducto = document.createElement("span");
+
+            let botonMas = document.createElement("button");
+            botonMas.classList.add("botonesArticulos");
+            botonMas.textContent = "+";
+
+            let btnBorrarArticulo = document.createElement("button");
+            btnBorrarArticulo.classList.add("btnBorrarArticulo");
+            btnBorrarArticulo.textContent = "🗑️";
+
+            nombreProductoCarrito.textContent = producto.title;
+            precioProductoCarrito.textContent = producto.price;
+
+            cantidadProducto.textContent = productoCarrito.cantidad;
+
+            botonMenos.addEventListener("click", () =>{
+                elemento.cantidad--;
+                cantidadProducto.textContent = elemento.cantidad;
+                if(elemento.cantidad == 0){
+                    carrito = carrito.filter(productoBorrar => productoBorrar.id !== elemento.id);
+                    mostrarCarrito();
+                }
+            })
+
+            botonMas.addEventListener("click", () =>{
+                elemento.cantidad++;
+                cantidadProducto.textContent = elemento.cantidad;
+            })
+
+            btnBorrarArticulo.addEventListener("click", () =>{
+                carrito = carrito.filter(productoBorrar => productoBorrar.id !== elemento.id);
+                mostrarCarrito();
+            })
+
+            
+
+            divControlarArticulo.appendChild(botonMenos);
+            divControlarArticulo.appendChild(cantidadProducto);
+            divControlarArticulo.appendChild(botonMas);
+            divControlarArticulo.appendChild(btnBorrarArticulo);
+            
+            divTextoCarrito.appendChild(nombreProductoCarrito);
+            divTextoCarrito.appendChild(precioProductoCarrito);
+            divTextoCarrito.appendChild(divControlarArticulo);
+
+            elementoCarrito.appendChild(imgCarrito);
+            elementoCarrito.appendChild(divTextoCarrito);
+
+            divElementosCarrito.appendChild(elementoCarrito);
+
+            divCarrito.appendChild(divElementosCarrito);
+            
+            
+        })
+        .catch((err) => {
+            tiempCarga.style.display = "none";
+            console.log("error:", err);
+        });
+    });
+
+    document.body.appendChild(divCarrito);
+    
 }
