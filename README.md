@@ -8,4 +8,4 @@ Tecnologias utilizadas:
   - CSS
   - JavaScript
 
-🛜URL del proyecto en producción: https://tiendaonlinejorge-95bdf.web.app/
+🛜URL del proyecto en producción: [https://tiendaonlinejorge-95bdf.web.app/](https://tiendaonline-525bc.web.app/)
