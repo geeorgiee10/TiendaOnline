@@ -1,7 +1,8 @@
+/* Estilos para el carrito */
 .divCarrito{
     height: 100%;
     width: 100%;
-    background-color: var(--color-fondo);
+    background: linear-gradient(135deg, var(--color-fondo-principal), var(--color-fondo));
     position: fixed;
     z-index: 1000;
     top: 0;
@@ -9,11 +10,13 @@
     display: flex;
     flex-direction: column;
     padding: var(--espaciado);
-    overflow-y: auto;
+    overflow-y: auto; /* Permitir scroll */
 }
 
 .tituloCarrito{
     align-self: center;
+    font-family: var(--fuente-navidad);
+    font-size: 2rem;
 }
 
 .botonCerrarCarrito {
@@ -36,6 +39,7 @@
     transform: scale(1.5);
 }
 
+/* Estilos para el contenedor de los productos en el carrito */
 .divElementosCarrito{
     width: 100%;
     height: auto;
@@ -46,31 +50,32 @@
     gap: var(--espaciado-pequeno);
 }
 
+/* Estilos para los elementos del carrito */
 .elementoCarrito{
     min-width: 20rem;
-    width: 20%;
-    height: auto;
-    min-height: 30rem;
+    width: 100%;
+    height: 10rem;
+    min-height: 10rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     border-radius: var(--borde-radio);
     background-color: var(--color-fondo-principal);
 }
 
 .imgCarrito{
-    height: 60%;
+    height: 100%;
     border-radius: var(--borde-radio);
 }
 
 .divTextoCarrito{
-    height: 40%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
-    margin-top: auto;
     padding: var(--espaciado-pequeno);
 }
 
+/* Ponerle el simbolo € al precio */
 .divTextoCarrito > *:nth-child(2)::after {
     content: "€";
     margin-left: 0.2rem;
@@ -78,6 +83,7 @@
 
 .vacio{
     align-self: center;
+    margin-top: 15%;
 }
 
 .divControlarArticulo{
@@ -87,6 +93,7 @@
     gap: 1rem;
 }
 
+/* Botones que controlan la cantidad y permiten borrar los elementos del carrito */
 .botonesArticulos{
     width: 1.5rem;
     height: 1.5rem;
@@ -113,4 +120,42 @@
 
 .btnBorrarArticulo:hover{
     transform: scale(1.2);
+}
+
+/* Boton que borra al carrito */
+.botonBorrarCarrito{
+    min-height: 3rem;
+    height: 3rem;
+    min-width: 10rem;
+    width: 10rem;
+    font-size: var(--texto-grande);
+    border-radius: var(--borde-radio);
+    border: 0;
+    background-color: var(--color-secundario);
+    color: var(--color-fondo-principal);
+    margin: var(--espaciado);
+    align-self: center;
+    transition: transform 0.6s ease;
+}
+
+.botonBorrarCarrito:hover{
+    transform: scale(1.2);
+}
+
+/* Media querie para vistas pequeñas */
+@media (max-width: 768px) {
+
+    .elementoCarrito{
+        height: 12rem;
+        min-height: 12rem;
+    }
+    
+    .imgCarrito{
+        height: 100%;
+        width: 50%;
+    }
+    
+    .divTextoCarrito{
+        font-size: var(--texto-pequeno);
+    }
 }

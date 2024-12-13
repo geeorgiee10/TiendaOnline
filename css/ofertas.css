@@ -7,6 +7,7 @@
     align-items: center;
     justify-content: center;
     gap: var(--espaciado);
+    font-size: var(--texto-grande);
 }
 
 .formularioOfertas{
@@ -43,12 +44,12 @@
 }
 
 #enviarOfertas{
-    height: 2rem;
+    height: 3rem;
     background-color: var(--color-secundario);
     color: var(--color-fondo-principal);
     border-radius: var(--borde-radio);
     border: 0;
-    font-size: var(--texto-pequeno);
+    font-size: var(--texto-grande);
     transition: transform 1s ease;
 }
 

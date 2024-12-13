@@ -11,6 +11,8 @@ footer {
     align-items: center;
     justify-content: space-between; /* Que los elementos que contiene esten separados entre si */
     padding: var(--espaciado);
+    padding-left: 5rem;
+    padding-right: 5rem;
 }
 
 footer p{
@@ -35,6 +37,7 @@ footer p{
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
+    margin-left: 1.5rem;
 }
 
 /* Estilos para la seccion nosotros */
@@ -54,6 +57,7 @@ footer p{
     gap: 1rem;
     align-items: center;
     justify-content: center;
+    margin-right: 1.5rem;
 }
 
 #metodosPago{
@@ -124,6 +128,10 @@ footer p{
         text-align: center;
     }
 
+    #pagoYRedes{
+        margin-right: 0;
+    }
+
     #iconoPago, #iconoRedesSociales {
         flex-wrap: wrap;
         justify-content: center;
@@ -140,6 +148,7 @@ footer p{
     
     #ayuda{
         font-size: 0.7rem;
+        margin-left: 0;
     }
     
     #nosotros{

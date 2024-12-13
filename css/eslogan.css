@@ -15,7 +15,7 @@
     font-size: 4rem;
     font-weight: bold;
     color: var(--color-fondo);
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para el texto */
+    text-shadow: 4px 4px 8px rgba(0,0,0,0.5); /* Sombra para el texto */
     transform: rotate(10deg);
     padding: 2rem;
 }
